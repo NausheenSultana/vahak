@@ -12,7 +12,14 @@ const SignupSchema = Yup.object().shape({
 });
 
 const FormStepTwo = ({ setFormData, formData, navigation }) => {
-  const { source, destination, noOfTravellers, carType, bidAmount } = formData;
+  const {
+    source,
+    destination,
+    noOfTravellers,
+    carType,
+    bidAmount,
+    negotiable,
+  } = formData;
   const { next, go } = navigation;
   return (
     <div>
@@ -67,7 +74,7 @@ const FormStepTwo = ({ setFormData, formData, navigation }) => {
                 />
               </div>
               <label>
-                <Field type="checkbox" name="negotiable" value="negotiable" />
+                <Field type="checkbox" name="negotiable" value={negotiable} />
                 Rate Negotiable
               </label>
 

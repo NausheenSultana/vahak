@@ -34,4 +34,4 @@ const FormStepFour = ({ formData, navigation, toIndianCurrency }) => {
   );
 };
 
-export default FormStepFour;
+export default FormStepFive;

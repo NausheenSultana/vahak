@@ -20,6 +20,7 @@ const defaultData = {
   name: "",
   remarks: "",
   disabled: false,
+  negotiable: false,
 };
 
 const MultiStepForm = (_) => {
@@ -28,17 +29,7 @@ const MultiStepForm = (_) => {
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
 
-  const toIndianCurrency = (num) => {
-    num = num.toString();
-    let lastThree = num.substring(num.length - 3);
-    let otherNumbers = num.substring(0, num.length - 3);
-    if (otherNumbers !== "") lastThree = "," + lastThree;
-    let res =
-      "\u20B9" + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-    return res;
-  };
-
-  const props = { formData, setFormData, navigation, toIndianCurrency };
+  const props = { formData, setFormData, navigation };
 
   switch (id) {
     case "1":
