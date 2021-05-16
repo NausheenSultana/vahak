@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+$bg-img: url("https://marvel-live.freetls.fastly.net/canvas/2020/9/8844bfe11afa4801a5a6422d98339659?quality=95&fake=.png");
+$purpleHue: linear-gradient(135deg, #2b2ecf 0%, #652bcf 100%);
+
+body {
+  font-family: Poppins;
+  background-color: white;
+
+  .header {
+    background-color: #07133b;
+    color: white;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .form > * {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .form-field {
+    height: 45px;
+    border-radius: 5px;
+    border-color: #eee;
+    border: 1px solid #ddd;
+    font-weight: bolder;
+    color: black;
+  }
+  .submit {
+    background-color: #1053fb;
+    color: white;
+    width: 500px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    font-size: 24px;
+  }
+  .wrapper {
+    padding: 30px;
+    @media (max-width: 500px) {
+      padding: 0;
+    }
+
+    .mainContent {
+      margin-left: 134px;
+      @media (max-width: 500px) {
+        margin-left: 0;
+      }
+
+      .project-allocations-search-heading {
+        color: #ff0066;
+        font-family: Poppins;
+        font-size: 36px;
+        line-height: 43px;
+        text-align: left;
+        font-weight: bolder;
+        margin: 40px 0px;
+        @media (max-width: 500px) {
+          position: absolute;
+          color: #ffffff;
+          font-family: Poppins;
+          font-size: 42px;
+          line-height: 50px;
+          text-align: center;
+          top: 100px;
+          text-shadow: 2px 2px #222;
+        }
+      }
+    }
+  }
+}
