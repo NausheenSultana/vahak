@@ -2,9 +2,44 @@
 $bg-img: url("https://marvel-live.freetls.fastly.net/canvas/2020/9/8844bfe11afa4801a5a6422d98339659?quality=95&fake=.png");
 $purpleHue: linear-gradient(135deg, #2b2ecf 0%, #652bcf 100%);
 
+:root {
+  --gray-900: #1a202c;
+  --gray-800: #2d3748;
+  --gray-700: #4a5568;
+  --gray-600: #718096;
+  --gray-500: #a0aec0;
+  --gray-400: #cbd5e0;
+  --gray-300: #e2e8f0;
+  --gray-200: #edf2f7;
+  --gray-100: #f7fafc;
+  --red-100: #fff5f5;
+  --red-200: #fed7d7;
+  --red-300: #feb2b2;
+  --red-400: #fc8181;
+  --red-500: #f56565;
+  --red-600: #e53e3e;
+  --red-700: #c53030;
+  --red-800: #9b2c2c;
+  --red-900: #742a2a;
+  --blue-100: #ebf8ff;
+  --blue-200: #bee3f8;
+  --blue-300: #90cdf4;
+  --blue-400: #63b3ed;
+  --blue-500: #4299e1;
+  --blue-600: #3182ce;
+  --blue-700: #2b6cb0;
+  --blue-800: #2c5282;
+  --blue-900: #2a4365;
+  --white: white;
+  --red: #f56565;
+  --text-decoration-color: var(--gray-400);
+  --text-color: var(--gray-800);
+  --focus-ring-color: var(--blue-500);
+}
+
 body {
   font-family: Poppins;
-  background-color: white;
+  background-color: --white;
 
   .header {
     background-color: #07133b;
@@ -23,9 +58,23 @@ body {
     align-items: center;
     margin: 0 auto;
   }
+  .bidAmount {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">Age:</text></svg>')
+      no-repeat;
+  }
   .form > * {
     width: 100%;
     margin-bottom: 20px;
+
+    label {
+      font-size: 12px;
+      display: block;
+      background: white;
+      margin-bottom: -10px;
+      /* margin-right: -10px; */
+      z-index: 2;
+      position: absolute;
+    }
   }
 
   .form-field {
@@ -34,7 +83,25 @@ body {
     border-color: #eee;
     border: 1px solid #ddd;
     font-weight: bolder;
-    color: black;
+    color: --gray-900;
+    padding: 0.65rem 0.5rem;
+  }
+  select {
+    margin: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    padding: 0.65rem 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    color: var(--gray-700);
+    height: auto;
+    font-weight: bolder;
+    background-color: var(--gray-100);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125.304 125.304"><path d="M62.652 103.895L0 21.41h125.304" fill="%23343334"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: center right 0.5rem;
   }
   .submit {
     background-color: #1053fb;
@@ -45,6 +112,7 @@ body {
     margin: 0 auto;
     border: none;
     font-size: 24px;
+    border-radius: 5px;
   }
   .wrapper {
     padding: 30px;

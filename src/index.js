@@ -1,6 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import StepForm from "./StepForm";
+import MultiStepForm from "./MultiStepForm";
 
-ReactDOM.render(<StepForm />, document.getElementById("root"));
+ReactDOM.render(
+  <div className="app">
+    <div className="wrapper">
+      <MultiStepForm />
+    </div>
+  </div>,
+  document.getElementById("root")
+);
