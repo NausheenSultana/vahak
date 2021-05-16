@@ -27,7 +27,6 @@ const FormStepTwo = ({ setFormData, formData, navigation }) => {
                 alt="edit"
                 width="30"
                 height="30"
-                alt="edit"
               />
             </button>
           </span>
