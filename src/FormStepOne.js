@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./styles.scss";
-import MultiStepForm from "./MultiStepForm";
 import * as Yup from "yup";
 
 const SignupSchema = Yup.object().shape({
@@ -41,10 +40,12 @@ const FormStepOne = ({ setFormData, formData, navigation }) => {
           console.log(values);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ submit }) => (
           <Form className="form">
-            <div>
-              <label htmlFor="source">Souce Location*</label>
+            <div className="coupled-fields">
+              <label className="source-label" htmlFor="source">
+                Souce Location*
+              </label>
               <Field
                 className="form-field"
                 type="text"
@@ -52,9 +53,15 @@ const FormStepOne = ({ setFormData, formData, navigation }) => {
                 value={source}
                 onChange={setFormData}
               />
-              <ErrorMessage name="source" component="div" />
+              <ErrorMessage
+                className="error-field"
+                name="source"
+                component="div"
+              />
 
-              <label htmlFor="destination">Destination*</label>
+              <label className="destination-label" htmlFor="destination">
+                Destination*
+              </label>
               <Field
                 className="form-field"
                 type="text"
@@ -62,34 +69,48 @@ const FormStepOne = ({ setFormData, formData, navigation }) => {
                 name="destination"
                 onChange={setFormData}
               />
-              <ErrorMessage name="destination" component="div" />
+              <ErrorMessage
+                className="error-field"
+                name="destination"
+                component="div"
+              />
             </div>
-            <label htmlFor="carType">Select Car Type*</label>
-            <Field
-              className="select"
-              name="carType"
-              value={carType}
-              as="select"
-              onChange={setFormData}
-            >
-              <option value="red">Hatchback</option>
-              <option value="green">Sedan</option>
-              <option value="blue">SUV</option>
-              <option value="blue">Truck</option>
-            </Field>
-            <ErrorMessage name="TypeOfCar" component="div" />
-
-            <label htmlFor="noOfTravellers">Number of Travellers*</label>
-            <Field
-              className="form-field"
-              type="text"
-              value={noOfTravellers}
-              name="noOfTravellers"
-              onChange={setFormData}
-            />
-            <ErrorMessage name="noOfTravellers" component="div" />
-
-            <button onClick={next} className="submit" disabled={isSubmitting}>
+            <div className="relative">
+              <label htmlFor="carType">Select Car Type*</label>
+              <Field
+                className="select"
+                name="carType"
+                value={carType}
+                as="select"
+                onChange={setFormData}
+              >
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="truck">Truck</option>
+              </Field>
+              <ErrorMessage
+                className="error-field"
+                name="TypeOfCar"
+                component="div"
+              />
+            </div>
+            <div className="relative">
+              <label htmlFor="noOfTravellers">Number of Travellers*</label>
+              <Field
+                className="form-field"
+                type="text"
+                value={noOfTravellers}
+                name="noOfTravellers"
+                onChange={setFormData}
+              />
+              <ErrorMessage
+                className="error-field"
+                name="noOfTravellers"
+                component="div"
+              />
+            </div>
+            <button onClick={next} className="submit">
               Enter bid details
             </button>
           </Form>

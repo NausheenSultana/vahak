@@ -5,7 +5,7 @@ import MultiStepForm from "./MultiStepForm";
 
 ReactDOM.render(
   <div className="app">
-    <div className="wrapper">
+    <div className="OuterWrapper">
       <MultiStepForm />
     </div>
   </div>,

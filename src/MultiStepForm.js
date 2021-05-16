@@ -11,10 +11,14 @@ import "./styles.scss";
 
 const steps = [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }, { id: "5" }];
 const defaultData = {
-  source: "bbbb",
+  source: "",
   destination: "",
-  carType: "",
+  carType: "Hatchback",
   noOfTravellers: "",
+  bidAmount: "",
+  number: "",
+  name: "",
+  remarks: "",
 };
 const MultiStepForm = ({ images }) => {
   const [formData, setFormData] = useForm(defaultData);

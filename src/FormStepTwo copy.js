@@ -12,21 +12,12 @@ const SignupSchema = Yup.object().shape({
 });
 
 const FormStepThree = ({ setFormData, formData, navigation }) => {
-  const {
-    source,
-    destination,
-    noOfTravellers,
-    carType,
-    bidAmount,
-    number,
-    name,
-    remarks,
-  } = formData;
+  const { source, destination, noOfTravellers, carType, bidAmount } = formData;
   const { next } = navigation;
   return (
     <div>
-      <h1 className="header">Place your Bid(2/4 step)</h1>
-      <div className="details">
+      <h1 className="header">Place your Bid(3/4 step)</h1>
+      <div>
         <h3>Journey details</h3>
         <div>
           <p>
@@ -35,7 +26,6 @@ const FormStepThree = ({ setFormData, formData, navigation }) => {
           <p>
             {noOfTravellers}/{carType}
           </p>
-          <p>{bidAmount}</p>
         </div>
       </div>
       <Formik
@@ -50,46 +40,17 @@ const FormStepThree = ({ setFormData, formData, navigation }) => {
       >
         {({ isSubmitting }) => (
           <Form className="form">
-            <label htmlFor="number">Enter your 10 digits phone number*</label>
             <Field
-              className="form-field"
+              className="bidAmount form-field"
               type="text"
-              name="number"
-              value={number}
+              name="bidAmount"
+              value={bidAmount}
               onChange={setFormData}
             />
-            <ErrorMessage
-              className="error-field"
-              name="source"
-              component="div"
-            />
-
-            <label htmlFor="name">Enter your Name*</label>
-            <Field
-              className="form-field"
-              type="text"
-              value={name}
-              name="name"
-              onChange={setFormData}
-            />
-            <ErrorMessage
-              className="error-field"
-              name="remarks"
-              component="div"
-            />
-            <label htmlFor="remarks">Enter remarks (optional)</label>
-            <Field
-              className="form-field"
-              type="text"
-              value={remarks}
-              name="remarks"
-              onChange={setFormData}
-            />
-            <ErrorMessage
-              className="error-field"
-              name="destination"
-              component="div"
-            />
+            <ErrorMessage name="bidAmount" component="div" />
+            {/* <input type="checkbox" name="negotiable">
+              Rate Negotiable
+            </input> */}
             <label>
               <Field type="checkbox" name="negotiable" value="negotiable" />
               Rate Negotiable

@@ -8,50 +8,66 @@ const SignupSchema = Yup.object().shape({
     .min(1, "Too Short!")
     .max(5, "Too Long!")
     .required("Required"),
+  negotiable: Yup.boolean().oneOf([true], [false]),
 });
 
-const FormStepTwo = ({ setForm, formData, navigation }) => {
-  const { source, destination, noOfTravellers, carType } = formData;
+const FormStepTwo = ({ setFormData, formData, navigation }) => {
+  const { source, destination, noOfTravellers, carType, bidAmount } = formData;
   const { next } = navigation;
   return (
     <div>
       <h1 className="header">Place your Bid(2/4 step)</h1>
       <div>
-        <h3>Journey details</h3>
-        <div>
-          <p>
-            {source} - {destination}
-          </p>
-          <p>
-            {noOfTravellers}/{carType}
-          </p>
+        <div className="details">
+          <h3>Journey details</h3>
+          <div>
+            <p>
+              {source} - {destination}
+            </p>
+            <p>
+              {noOfTravellers}/{carType}
+            </p>
+          </div>
         </div>
+        <Formik
+          initialValues={{
+            bidAmount: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={(values) => {
+            // same shape as initial values
+            console.log(values);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form className="form">
+              <Field
+                className="bidAmount form-field"
+                type="text"
+                name="bidAmount"
+                value={bidAmount}
+                onChange={setFormData}
+              />
+              <ErrorMessage
+                name="bidAmount"
+                component="span"
+                className="error-field"
+              />
+              {/* <input type="checkbox" name="negotiable">
+              Rate Negotiable
+            </input> */}
+              <label>
+                <Field type="checkbox" name="negotiable" value="negotiable" />
+                Rate Negotiable
+              </label>
+
+              <button onClick={next} className="submit">
+                Next
+              </button>
+            </Form>
+          )}
+        </Formik>
       </div>
-      <Formik
-        initialValues={{
-          bidAmount: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form className="form">
-            <label htmlFor="bidAmount">Number of Travellers*</label>
-            <Field
-              className="bidAmount form-field"
-              type="text"
-              name="bidAmount"
-            />
-            <ErrorMessage name="noOfTravellers" component="div" />
-            <button onClick={next} className="submit" disabled={isSubmitting}>
-              Next
-            </button>
-          </Form>
-        )}
-      </Formik>
     </div>
   );
 };
