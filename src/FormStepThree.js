@@ -32,21 +32,20 @@ const FormStepThree = ({
       <JourneyDetails formData={formData} go={go} />
       <div className="form">
         <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
-        <label>
-          <Field type="checkbox" name="negotiable" value="negotiable" />
-          Rate Negotiable
-        </label>
       </div>
       <Formik
         initialValues={{
-          bidAmount: "",
+          source: "",
+          destination: "",
+          typeOfCar: "",
+          noOfTravellers: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
           console.log(values);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ submit }) => (
           <Form className="form">
             <div className="relative">
               <label htmlFor="number">Enter your 10 digits phone number*</label>
