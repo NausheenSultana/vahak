@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins);
-$bg-img: url("https://marvel-live.freetls.fastly.net/canvas/2020/9/8844bfe11afa4801a5a6422d98339659?quality=95&fake=.png");
+$rupee-img: url("http://i.imgur.com/Fd7NROx.png");
 
 :root {
   --gray-900: #1a202c;
@@ -11,43 +11,22 @@ $bg-img: url("https://marvel-live.freetls.fastly.net/canvas/2020/9/8844bfe11afa4
   --gray-300: #e2e8f0;
   --gray-200: #edf2f7;
   --gray-100: #f7fafc;
-  --red-100: #fff5f5;
-  --red-200: #fed7d7;
-  --red-300: #feb2b2;
-  --red-400: #fc8181;
-  --red-500: #f56565;
   --red-600: #e53e3e;
   --red-700: #c53030;
   --red-800: #9b2c2c;
   --red-900: #742a2a;
-  --blue-100: #ebf8ff;
-  --blue-200: #bee3f8;
-  --blue-300: #90cdf4;
-  --blue-400: #63b3ed;
-  --blue-500: #4299e1;
   --blue-600: #1053fb;
   --blue-700: #2b6cb0;
   --blue-800: #2c5282;
   --blue-900: #07133b;
-  --white: white;
+  --white: #fff;
   --red: #f56565;
-  --text-decoration-color: var(--gray-400);
-  --text-color: var(--gray-800);
-  --focus-ring-color: var(--blue-500);
 }
 
 body {
   font-family: Poppins;
-  background-color: --white;
+  background-color: var(--white);
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
   .bid-details {
     font-size: 14px;
     flex-direction: row;
@@ -106,6 +85,7 @@ body {
     flex-direction: initial;
     justify-content: space-between;
     position: relative;
+
     input {
       width: 45%;
     }
@@ -163,8 +143,7 @@ body {
     }
   }
   .bidAmount {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">&#8377;</text></svg>')
-      no-repeat;
+    background: $rupee-img 30px no-repeat;
     border: none !important;
     width: 50% !important;
     height: 100px;
@@ -190,8 +169,8 @@ body {
   .form-field {
     height: auto;
     border-radius: 5px;
-    border-color: #eee;
-    border: 1px solid #ddd;
+    border-color: var(--gray-500);
+    border: var(--gray-600);
     font-weight: bolder;
     color: var(--gray-900);
     width: 100%;
