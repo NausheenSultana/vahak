@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import "./styles.scss";
-import * as Yup from "yup";
 import BidDetails from "./BidDetails";
 import JourneyDetails from "./JourneyDetails";
 
