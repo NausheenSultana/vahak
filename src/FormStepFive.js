@@ -1,10 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
 import "./styles.scss";
+// import toIndianCurrency from "./constants";
 import BidDetails from "./BidDetails";
 import JourneyDetails from "./JourneyDetails";
 
-const FormStepFour = ({ formData, navigation, toIndianCurrency }) => {
+const FormStepFive = ({ formData, navigation }) => {
   const { next, go } = navigation;
 
   return (
