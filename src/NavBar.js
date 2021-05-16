@@ -3,6 +3,7 @@ const NavBar = (_) => (
     <img
       style={{ width: "100px", height: "100px", padding: "20px" }}
       src="images/download.jpeg"
+      alt="logo"
     />
   </div>
 );

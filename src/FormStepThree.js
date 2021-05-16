@@ -5,26 +5,26 @@ import * as Yup from "yup";
 import JourneyDetails from "./JourneyDetails";
 
 const SignupSchema = Yup.object().shape({
-  bidAmount: Yup.number()
+  number: Yup.number()
     .min(1, "Too Short!")
     .max(5, "Too Long!")
     .required("Required"),
   negotiable: Yup.boolean().oneOf([true], [false]),
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  remarks: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
 });
 
-const FormStepThree = ({ setFormData, formData, navigation }) => {
-  const { bidAmount, number, name, remarks, source, destination } = formData;
+const FormStepThree = ({
+  setFormData,
+  formData,
+  navigation,
+  toIndianCurrency,
+}) => {
+  const { bidAmount, number, name, remarks } = formData;
   const { next, go } = navigation;
-
-  const toIndianCurrency = (num) => {
-    num = num.toString();
-    let lastThree = num.substring(num.length - 3);
-    let otherNumbers = num.substring(0, num.length - 3);
-    if (otherNumbers != "") lastThree = "," + lastThree;
-    let res =
-      "\u20B9" + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-    return res;
-  };
 
   return (
     <div>
@@ -32,6 +32,10 @@ const FormStepThree = ({ setFormData, formData, navigation }) => {
       <JourneyDetails formData={formData} go={go} />
       <div className="form">
         <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
+        <label>
+          <Field type="checkbox" name="negotiable" value="negotiable" />
+          Rate Negotiable
+        </label>
       </div>
       <Formik
         initialValues={{

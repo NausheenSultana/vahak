@@ -11,6 +11,7 @@ const BidDetails = ({ formData, go, toIndianCurrency }) => {
             src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
             width="30"
             height="30"
+            alt="edit"
           />
           <p>{toIndianCurrency(bidAmount)}</p>
           <p>Fixed Price</p>

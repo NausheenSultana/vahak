@@ -21,13 +21,24 @@ const defaultData = {
   remarks: "",
   disabled: false,
 };
-const MultiStepForm = ({ images }) => {
+
+const MultiStepForm = (_) => {
   const [formData, setFormData] = useForm(defaultData);
 
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
 
-  const props = { formData, setFormData, navigation };
+  const toIndianCurrency = (num) => {
+    num = num.toString();
+    let lastThree = num.substring(num.length - 3);
+    let otherNumbers = num.substring(0, num.length - 3);
+    if (otherNumbers !== "") lastThree = "," + lastThree;
+    let res =
+      "\u20B9" + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    return res;
+  };
+
+  const props = { formData, setFormData, navigation, toIndianCurrency };
 
   switch (id) {
     case "1":

@@ -5,23 +5,7 @@ import * as Yup from "yup";
 import BidDetails from "./BidDetails";
 import JourneyDetails from "./JourneyDetails";
 
-const SignupSchema = Yup.object().shape({
-  otp: Yup.number()
-    .min(4, "Too Short!")
-    .max(4, "Too Long!")
-    .required("Required"),
-});
-const toIndianCurrency = (num) => {
-  num = num.toString();
-  let lastThree = num.substring(num.length - 3);
-  let otherNumbers = num.substring(0, num.length - 3);
-  if (otherNumbers != "") lastThree = "," + lastThree;
-  let res =
-    "\u20B9" + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-  return res;
-};
-
-const FormStepFour = ({ formData, navigation }) => {
+const FormStepFour = ({ formData, navigation, toIndianCurrency }) => {
   const { next, go } = navigation;
 
   return (
@@ -37,10 +21,6 @@ const FormStepFour = ({ formData, navigation }) => {
       <Formik
         initialValues={{
           bidAmount: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={(values) => {
-          console.log(values);
         }}
       >
         {({ isSubmitting }) => (

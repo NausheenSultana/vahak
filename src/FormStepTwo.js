@@ -24,8 +24,10 @@ const FormStepTwo = ({ setFormData, formData, navigation }) => {
             <button onClick={() => go("1")}>
               <img
                 src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+                alt="edit"
                 width="30"
                 height="30"
+                alt="edit"
               />
             </button>
           </span>

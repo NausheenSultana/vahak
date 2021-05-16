@@ -11,18 +11,9 @@ const SignupSchema = Yup.object().shape({
     .max(4, "Too Long!")
     .required("Required"),
 });
-const toIndianCurrency = (num) => {
-  num = num.toString();
-  let lastThree = num.substring(num.length - 3);
-  let otherNumbers = num.substring(0, num.length - 3);
-  if (otherNumbers != "") lastThree = "," + lastThree;
-  let res =
-    "\u20B9" + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-  return res;
-};
 
-const FormStepFour = ({ formData, navigation }) => {
-  const { bidAmount, name, number, remarks, source, destination } = formData;
+const FormStepFour = ({ formData, navigation, toIndianCurrency }) => {
+  const { number } = formData;
   const { next, go } = navigation;
   let otp = "";
   return (
@@ -46,6 +37,7 @@ const FormStepFour = ({ formData, navigation }) => {
               src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
               width="30"
               height="30"
+              alt="edit"
             />
           </button>
         </span>
@@ -69,7 +61,7 @@ const FormStepFour = ({ formData, navigation }) => {
               onChange={(e) => (otp = e.value)}
             />
             <ErrorMessage name="otp" component="div" />
-            <a href="#">Resend OTP again</a>
+            <a href="#<">Resend OTP again</a>
             <button onClick={next} className="submit">
               Verify via OTP
             </button>
