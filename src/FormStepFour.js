@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./styles.scss";
 import * as Yup from "yup";
+import BidDetails from "./BidDetails";
+import JourneyDetails from "./JourneyDetails";
 
 const SignupSchema = Yup.object().shape({
   otp: Yup.number()
@@ -19,65 +21,23 @@ const toIndianCurrency = (num) => {
   return res;
 };
 
-const FormStepFour = ({ setFormData, formData, navigation }) => {
-  const {
-    source,
-    destination,
-    noOfTravellers,
-    carType,
-    bidAmount,
-    name,
-    number,
-    comments,
-  } = formData;
+const FormStepFour = ({ formData, navigation }) => {
+  const { bidAmount, name, number, remarks, source, destination } = formData;
   const { next, go } = navigation;
   let otp = "";
   return (
     <div>
       <h1 className="header">Place your Bid(4/4 step)</h1>
-      <div className="details">
-        <h3 className="journey-title">Journey details</h3>
-        <span className="edit">
-          <button onClick={() => go("1")}>
-            <img
-              src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
-              width="30"
-              height="30"
-            />
-          </button>
-        </span>
-        <div>
-          <p>
-            {source} - {destination}
-          </p>
-          <p>
-            {noOfTravellers} persons, {carType}
-          </p>
-        </div>
-      </div>
-      <div className="details">
-        <h3 className="journey-title">Bid details</h3>
-        <span className="edit">
-          <button onClick={() => go("3")}>
-            <img
-              src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
-              width="30"
-              height="30"
-            />
-            <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
-            <p>Fixed Price</p>
-          </button>
-        </span>
-        <div>
-          <p>+91-{number}</p>
-          <p>{name}</p>
-          <p>{comments}</p>
-        </div>
-      </div>
+      <JourneyDetails formData={formData} go={go} />
+      <BidDetails
+        formData={formData}
+        go={go}
+        toIndianCurrency={toIndianCurrency}
+      />
       <div className="details">
         <span>
           We've sent an OTP to your number, please enter it below and submit
-          your bid {number}
+          your bid {number} &nbsp;&nbsp;&nbsp;
           <button
             onClick={() => go("3")}
             style={{ border: "none", background: "none" }}
@@ -88,14 +48,7 @@ const FormStepFour = ({ setFormData, formData, navigation }) => {
               height="30"
             />
           </button>
-          <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
-          <p>Fixed Price</p>
         </span>
-        <div>
-          <p>+91-{number}</p>
-          <p>{name}</p>
-          <p>{comments}</p>
-        </div>
       </div>
       <Formik
         initialValues={{
@@ -103,7 +56,6 @@ const FormStepFour = ({ setFormData, formData, navigation }) => {
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          // same shape as initial values
           console.log(values);
         }}
       >

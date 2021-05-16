@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 $bg-img: url("https://marvel-live.freetls.fastly.net/canvas/2020/9/8844bfe11afa4801a5a6422d98339659?quality=95&fake=.png");
-$purpleHue: linear-gradient(135deg, #2b2ecf 0%, #652bcf 100%);
 
 :root {
   --gray-900: #1a202c;
@@ -49,6 +48,20 @@ body {
     align-items: center;
     margin: 0 auto;
   }
+  .bid-details {
+    font-size: 14px;
+    flex-direction: row;
+    border-bottom: 1px solid var(--gray-300);
+    width: 100%;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 700px;
+    text-align: left;
+    margin: 0 auto;
+    padding: 30px;
+  }
   .details {
     display: flex;
     font-size: 14px;
@@ -62,16 +75,14 @@ body {
     justify-content: center;
     text-align: left;
     margin: 0 auto;
-    padding-left: 30px;
-    padding-bottom: 20px;
+    padding: 30px;
+  }
+  .edit {
+    text-align: right;
 
-    .edit {
-      text-align: right;
-
-      button {
-        background: none;
-        border: none;
-      }
+    button {
+      background: none;
+      border: none;
     }
   }
   .bid-display {
@@ -155,7 +166,7 @@ body {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">&#8377;</text></svg>')
       no-repeat;
     border: none !important;
-    width: 100px !important;
+    width: 50% !important;
     height: 100px;
     font-size: 66px;
     text-align: right !important;
@@ -222,38 +233,5 @@ body {
     border: none;
     font-size: 24px;
     border-radius: 5px;
-  }
-  .wrapper {
-    padding: 30px;
-    @media (max-width: 500px) {
-      padding: 0;
-    }
-
-    .mainContent {
-      margin-left: 134px;
-      @media (max-width: 500px) {
-        margin-left: 0;
-      }
-
-      .project-allocations-search-heading {
-        color: #ff0066;
-        font-family: Poppins;
-        font-size: 36px;
-        line-height: 43px;
-        text-align: left;
-        font-weight: bolder;
-        margin: 40px 0px;
-        @media (max-width: 500px) {
-          position: absolute;
-          color: #ffffff;
-          font-family: Poppins;
-          font-size: 42px;
-          line-height: 50px;
-          text-align: center;
-          top: 100px;
-          text-shadow: 2px 2px #222;
-        }
-      }
-    }
   }
 }

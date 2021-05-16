@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const FormStepOne = ({ setFormData, formData, navigation }) => {
-  const { source, destination, noOfTravellers, carType } = formData;
+  const { source, destination, noOfTravellers, carType, disabled } = formData;
   const { next } = navigation;
   return (
     <div>
@@ -36,7 +36,6 @@ const FormStepOne = ({ setFormData, formData, navigation }) => {
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          // same shape as initial values
           console.log(values);
         }}
       >
@@ -110,7 +109,7 @@ const FormStepOne = ({ setFormData, formData, navigation }) => {
                 component="div"
               />
             </div>
-            <button onClick={next} className="submit">
+            <button onClick={next} className="submit" disabled={disabled}>
               Enter bid details
             </button>
           </Form>

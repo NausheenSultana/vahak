@@ -19,6 +19,7 @@ const defaultData = {
   number: "",
   name: "",
   remarks: "",
+  disabled: false,
 };
 const MultiStepForm = ({ images }) => {
   const [formData, setFormData] = useForm(defaultData);

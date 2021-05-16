@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./styles.scss";
 import * as Yup from "yup";
+import JourneyDetails from "./JourneyDetails";
 
 const SignupSchema = Yup.object().shape({
   bidAmount: Yup.number()
@@ -12,16 +13,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const FormStepThree = ({ setFormData, formData, navigation }) => {
-  const {
-    source,
-    destination,
-    noOfTravellers,
-    carType,
-    bidAmount,
-    number,
-    name,
-    remarks,
-  } = formData;
+  const { bidAmount, number, name, remarks, source, destination } = formData;
   const { next, go } = navigation;
 
   const toIndianCurrency = (num) => {
@@ -37,34 +29,16 @@ const FormStepThree = ({ setFormData, formData, navigation }) => {
   return (
     <div>
       <h1 className="header">Place your Bid(2/4 step)</h1>
-      <div className="details">
-        <h3 className="journey-title">Journey details</h3>
-        <span className="edit">
-          <button onClick={() => go("1")}>
-            <img
-              src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
-              width="30"
-              height="30"
-            />
-          </button>
-        </span>
-        <div>
-          <p>
-            {source} - {destination}
-          </p>
-          <p>
-            {noOfTravellers} persons, {carType}
-          </p>
-        </div>
+      <JourneyDetails formData={formData} go={go} />
+      <div className="form">
+        <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
       </div>
-      <p className="bid-display">{toIndianCurrency(bidAmount)}</p>
       <Formik
         initialValues={{
           bidAmount: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          // same shape as initial values
           console.log(values);
         }}
       >
