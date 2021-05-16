@@ -5,7 +5,7 @@ import "./styles.scss";
 import BidDetails from "./BidDetails";
 import JourneyDetails from "./JourneyDetails";
 
-const FormStepFive = ({ formData, navigation }) => {
+const FormStepFive = ({ formData, navigation, toIndianCurrency }) => {
   const { next, go } = navigation;
 
   return (
