@@ -40,7 +40,7 @@ const MultiStepForm = ({ images }) => {
     case "5":
       return <FormStepFive {...props} />;
     default:
-      return null;
+      return <FormStepOne {...props} />;
   }
 };
 

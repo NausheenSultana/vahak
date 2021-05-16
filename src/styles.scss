@@ -51,10 +51,35 @@ body {
   }
   .details {
     display: flex;
-    justify-content: center;
+    font-size: 14px;
     flex-direction: row;
-    border-bottom: 1px solid var(--gray-500);
+    border-bottom: 1px solid var(--gray-300);
     width: 100%;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    justify-content: center;
+    text-align: left;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-bottom: 20px;
+
+    .edit {
+      text-align: right;
+
+      button {
+        background: none;
+        border: none;
+      }
+    }
+  }
+  .bid-display {
+    padding: 100px 0;
+    margin: 50px auto;
+    font-size: 70px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-300);
   }
   .header {
     background-color: var(--blue-900);
@@ -92,6 +117,10 @@ body {
       position: absolute;
     }
   }
+  .journey-title {
+    color: var(--gray-600);
+    text-transform: uppercase;
+  }
   .form {
     display: flex;
     flex-direction: column;
@@ -99,7 +128,15 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    text-align: center;
     padding: 100px 0px;
+
+    input[type="checkbox"] {
+      margin-right: 11px;
+      width: 20px;
+      height: 20px;
+      vertical-align: bottom;
+    }
 
     .error-field {
       color: var(--red-600);
@@ -108,14 +145,20 @@ body {
       position: absolute;
       bottom: -20px;
     }
+    .otp {
+      border: none;
+      border-bottom: 2px dashed var(--gray-600);
+      width: 100px;
+    }
   }
   .bidAmount {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">Age:</text></svg>')
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">&#8377;</text></svg>')
       no-repeat;
-    border: none;
-    width: 300px;
+    border: none !important;
+    width: 100px !important;
     height: 100px;
-    font-size: 36px;
+    font-size: 66px;
+    text-align: right !important;
   }
   .form > * {
     width: 100%;
@@ -148,6 +191,8 @@ body {
   .relative {
     position: relative;
     margin: 30px 0;
+    display: flex;
+    justify-content: center;
   }
   select {
     margin: 0;

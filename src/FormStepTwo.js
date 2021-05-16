@@ -13,19 +13,28 @@ const SignupSchema = Yup.object().shape({
 
 const FormStepTwo = ({ setFormData, formData, navigation }) => {
   const { source, destination, noOfTravellers, carType, bidAmount } = formData;
-  const { next } = navigation;
+  const { next, go } = navigation;
   return (
     <div>
       <h1 className="header">Place your Bid(2/4 step)</h1>
       <div>
         <div className="details">
-          <h3>Journey details</h3>
+          <h3 className="journey-title">Journey details</h3>
+          <span className="edit">
+            <button onClick={() => go("1")}>
+              <img
+                src="/images/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+                width="30"
+                height="30"
+              />
+            </button>
+          </span>
           <div>
             <p>
               {source} - {destination}
             </p>
             <p>
-              {noOfTravellers}/{carType}
+              {noOfTravellers} persons, {carType}
             </p>
           </div>
         </div>
@@ -41,21 +50,21 @@ const FormStepTwo = ({ setFormData, formData, navigation }) => {
         >
           {({ isSubmitting }) => (
             <Form className="form">
-              <Field
-                className="bidAmount form-field"
-                type="text"
-                name="bidAmount"
-                value={bidAmount}
-                onChange={setFormData}
-              />
-              <ErrorMessage
-                name="bidAmount"
-                component="span"
-                className="error-field"
-              />
-              {/* <input type="checkbox" name="negotiable">
-              Rate Negotiable
-            </input> */}
+              <div className="relative">
+                <Field
+                  className="bidAmount form-field"
+                  type="number"
+                  name="bidAmount"
+                  value={bidAmount}
+                  onChange={setFormData}
+                  placeholder="0"
+                />
+                <ErrorMessage
+                  name="bidAmount"
+                  component="div"
+                  className="error-field"
+                />
+              </div>
               <label>
                 <Field type="checkbox" name="negotiable" value="negotiable" />
                 Rate Negotiable
